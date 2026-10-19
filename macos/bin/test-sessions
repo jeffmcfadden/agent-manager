@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+Dir.chdir(File.expand_path('..', __dir__))
+abort 'Build failed' unless system('bin/build')
+app = File.expand_path('build/SessionLifecycleTest.app')
+FileUtils.rm_rf(app)
+FileUtils.cp_r('build/Build/Products/Debug/AgentManager.app', app)
+abort 'Test bundle configuration failed' unless system('/usr/libexec/PlistBuddy', '-c',
+  'Set :CFBundleIdentifier local.agent-manager.session-lifecycle-test', "#{app}/Contents/Info.plist")
+# Replace only the executable in this isolated test bundle; never touch the app.
+FileUtils.rm_f("#{app}/Contents/MacOS/AgentManager.debug.dylib")
+sources = Dir['Sources/*.swift'].reject { |p| p.end_with?('/main.swift') }
+command = ['xcrun', 'swiftc', '-swift-version', '5', '-module-cache-path', '.cache/swift-modules',
+           '-import-objc-header', 'vendor/libghostty/include/ghostty.h', *sources,
+           'Tests/SessionLifecycle/main.swift', 'vendor/libghostty/lib/libghostty.a']
+%w[AppKit Metal QuartzCore CoreText CoreGraphics Carbon IOKit].each { |f| command += ['-framework', f] }
+command += ['-lc++', '-o', "#{app}/Contents/MacOS/AgentManager"]
+abort 'Test compile failed' unless system(*command)
+abort 'Test signing failed' unless system('codesign', '--force', '--sign', '-', app)
+exec("#{app}/Contents/MacOS/AgentManager")

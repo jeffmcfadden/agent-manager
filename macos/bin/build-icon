@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+require 'json'
+Dir.chdir(File.expand_path('..', __dir__))
+source = 'Resources/Artwork/AppIcon-master.png'
+catalog = 'Resources/Assets.xcassets'
+appicon = File.join(catalog, 'AppIcon.appiconset')
+FileUtils.mkdir_p(appicon)
+info = { 'version' => 1, 'author' => 'xcode' }
+File.write(File.join(catalog, 'Contents.json'), JSON.pretty_generate({ 'info' => info }) + "\n")
+images = [16, 32, 128, 256, 512].flat_map do |size|
+  [1, 2].map do |scale|
+    filename = "icon_#{size}x#{size}#{scale == 2 ? '@2x' : ''}.png"
+    pixels = (size * scale).to_s
+    abort 'Icon resize failed' unless system('sips', '-z', pixels, pixels, source,
+      '--out', File.join(appicon, filename), out: File::NULL)
+    { 'idiom' => 'mac', 'size' => "#{size}x#{size}", 'scale' => "#{scale}x", 'filename' => filename }
+  end
+end
+File.write(File.join(appicon, 'Contents.json'), JSON.pretty_generate({ 'images' => images, 'info' => info }) + "\n")
+puts "Updated #{appicon}; Xcode compiles the app icon."

@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+Dir.chdir(File.expand_path('..', __dir__))
+FileUtils.mkdir_p('.cache')
+abort 'Test compile failed' unless system('xcrun', 'swiftc', '-swift-version', '5',
+  '-module-cache-path', '.cache/swift-modules', 'Sources/TmuxBackend.swift',
+  'Tests/TmuxLive/main.swift', '-o', '.cache/test-tmux-live')
+exec('.cache/test-tmux-live')

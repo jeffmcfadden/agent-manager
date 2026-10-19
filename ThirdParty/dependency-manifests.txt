@@ -1,0 +1,625 @@
+===== zig-packages/libxev-0.0.0-86vtc2UaEwDfiTKX3iBI-s_hdzfzWQUarT3MUrmUQl-Q/build.zig.zon =====
+.{
+    .name = .libxev,
+    .minimum_zig_version = "0.14.0",
+    .version = "0.0.0",
+    .fingerprint = 0x30f7363573edabf3,
+    .paths = .{""},
+}
+
+===== zig-packages/vaxis-0.1.0-BWNV_FUICQAFZnTCL11TUvnUr1Y0_ZdqtXHhd51d76Rn/build.zig.zon =====
+.{
+    .name = .vaxis,
+    .fingerprint = 0x14fbbb94fc556305,
+    .version = "0.1.0",
+    .minimum_zig_version = "0.14.0",
+    .dependencies = .{
+        .zigimg = .{
+            .url = "git+https://github.com/TUSF/zigimg#31268548fe3276c0e95f318a6c0d2ab10565b58d",
+            .hash = "zigimg-0.1.0-lly-O6N2EABOxke8dqyzCwhtUCAafqP35zC7wsZ4Ddxj",
+        },
+        .zg = .{
+            .url = "git+https://codeberg.org/atman/zg#4a002763419a34d61dcbb1f415821b83b9bf8ddc",
+            .hash = "zg-0.13.4-AAAAAGiZ7QLz4pvECFa_wG4O4TP4FLABHHbemH2KakWM",
+        },
+    },
+    .paths = .{
+        "LICENSE",
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}
+
+===== zig-packages/wayland-0.4.0-dev-lQa1kjfIAQCmhhQu3xF0KH-94-TzeMXOqfnP0-Dg6Wyy/build.zig.zon =====
+.{
+    .name = .wayland,
+    .version = "0.4.0-dev",
+    .minimum_zig_version = "0.14.0",
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "LICENSE",
+    },
+    .dependencies = .{},
+    .fingerprint = 0xa8d655e92b50695,
+}
+
+===== zig-packages/z2d-0.8.1-j5P_Hq8vDwB8ZaDA54-SzESDLF2zznG_zvTHiQNJImZP/build.zig.zon =====
+// SPDX-License-Identifier: MPL-2.0
+//   Copyright © 2024-2025 Chris Marchesi
+.{
+    .name = .z2d,
+    .version = "0.8.1",
+    .fingerprint = 0x188c5a41eff938f,
+    .minimum_zig_version = "0.14.0",
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}
+
+===== zig-packages/zf-0.10.3-OIRy8aiIAACLrBllz0zjxaH0aOe5oNm3KtEMyCntST-9/build.zig.zon =====
+.{
+    .name = .zf,
+    .fingerprint = 0x30d847eef1728438,
+    .description = "a commandline fuzzy finder designed for filtering filepaths",
+    .version = "0.10.3",
+    .dependencies = .{
+        .vaxis = .{
+            .url = "git+https://github.com/rockorager/libvaxis#1f41c121e8fc153d9ce8c6eb64b2bbab68ad7d23",
+            .hash = "vaxis-0.1.0-BWNV_FUICQAFZnTCL11TUvnUr1Y0_ZdqtXHhd51d76Rn",
+            .lazy = true,
+        },
+    },
+    .paths = .{
+        "src/zf",
+        "build.zig",
+        "build.zig.zon",
+        "LICENSE",
+    },
+}
+
+===== zig-packages/zg-0.13.4-AAAAAGiZ7QLz4pvECFa_wG4O4TP4FLABHHbemH2KakWM/build.zig.zon =====
+.{
+    .name = "zg",
+    .version = "0.13.4",
+    .minimum_zig_version = "0.13.0",
+
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "codegen",
+        "data",
+        "LICENSE",
+        "README.md",
+        "src",
+        "unicode_license",
+        "UNICODE_VERSION.txt",
+    },
+}
+
+===== zig-packages/zig_objc-0.0.0-Ir_SpwsPAQBJgi9YRm2ubJMfdoysSq5gKpsIj3izQ8Zk/build.zig.zon =====
+.{
+    .name = .zig_objc,
+    .version = "0.0.0",
+    .fingerprint = 0x8a91772ba7d2bf22,
+    .paths = .{
+        "src/",
+        "build.zig",
+        "build.zig.zon",
+        "README.md",
+        "LICENSE",
+    },
+    .dependencies = .{},
+}
+
+===== zig-packages/zigimg-0.1.0-lly-O6N2EABOxke8dqyzCwhtUCAafqP35zC7wsZ4Ddxj/build.zig.zon =====
+.{
+    .name = .zigimg,
+    .version = "0.1.0",
+    .fingerprint = 0x6d2b443c3bbe5c96,
+    .paths = .{""},
+}
+
+===== zig-packages/ziglyph-0.11.2-AAAAAHPtHwB4Mbzn1KvOV7Wpjo82NYEc_v0WC8oCLrkf/build.zig.zon =====
+.{
+    .name = "ziglyph",
+    .version = "0.11.2",
+    .paths = .{
+        "src",
+	"build.zig",
+	"build.zig.zon",
+	"LICENSE",
+	"README.md",
+	"UNICODE_VERSION.txt",
+	"unicode_license",
+    },
+}
+
+===== ghostty/build.zig.zon =====
+.{
+    .name = .ghostty,
+    .version = "1.2.3",
+    .paths = .{""},
+    .fingerprint = 0x64407a2a0b4147e5,
+    .minimum_zig_version = "0.14.1",
+    .dependencies = .{
+        // Zig libs
+
+        .libxev = .{
+            // mitchellh/libxev
+            .url = "https://github.com/mitchellh/libxev/archive/7f803181b158a10fec8619f793e3b4df515566cb.tar.gz",
+            .hash = "libxev-0.0.0-86vtc2UaEwDfiTKX3iBI-s_hdzfzWQUarT3MUrmUQl-Q",
+            .lazy = true,
+        },
+        .vaxis = .{
+            // rockorager/libvaxis
+            .url = "git+https://github.com/rockorager/libvaxis#1f41c121e8fc153d9ce8c6eb64b2bbab68ad7d23",
+            .hash = "vaxis-0.1.0-BWNV_FUICQAFZnTCL11TUvnUr1Y0_ZdqtXHhd51d76Rn",
+            .lazy = true,
+        },
+        .z2d = .{
+            // vancluever/z2d
+            .url = "https://github.com/vancluever/z2d/archive/refs/tags/v0.8.1.tar.gz",
+            .hash = "z2d-0.8.1-j5P_Hq8vDwB8ZaDA54-SzESDLF2zznG_zvTHiQNJImZP",
+            .lazy = true,
+        },
+        .zig_objc = .{
+            // mitchellh/zig-objc
+            .url = "https://github.com/mitchellh/zig-objc/archive/c9e917a4e15a983b672ca779c7985d738a2d517c.tar.gz",
+            .hash = "zig_objc-0.0.0-Ir_SpwsPAQBJgi9YRm2ubJMfdoysSq5gKpsIj3izQ8Zk",
+            .lazy = true,
+        },
+        .zig_js = .{
+            // mitchellh/zig-js
+            .url = "https://deps.files.ghostty.org/zig_js-12205a66d423259567764fa0fc60c82be35365c21aeb76c5a7dc99698401f4f6fefc.tar.gz",
+            .hash = "N-V-__8AAB9YCQBaZtQjJZVndk-g_GDIK-NTZcIa63bFp9yZ",
+            .lazy = true,
+        },
+        .ziglyph = .{
+            .url = "https://deps.files.ghostty.org/ziglyph-b89d43d1e3fb01b6074bc1f7fc980324b04d26a5.tar.gz",
+            .hash = "ziglyph-0.11.2-AAAAAHPtHwB4Mbzn1KvOV7Wpjo82NYEc_v0WC8oCLrkf",
+            .lazy = true,
+        },
+        .zig_wayland = .{
+            // codeberg ifreund/zig-wayland
+            .url = "https://codeberg.org/ifreund/zig-wayland/archive/f3c5d503e540ada8cbcb056420de240af0c094f7.tar.gz",
+            .hash = "wayland-0.4.0-dev-lQa1kjfIAQCmhhQu3xF0KH-94-TzeMXOqfnP0-Dg6Wyy",
+        },
+        .zf = .{
+            // natecraddock/zf
+            .url = "https://github.com/natecraddock/zf/archive/7aacbe6d155d64d15937ca95ca6c014905eb531f.tar.gz",
+            .hash = "zf-0.10.3-OIRy8aiIAACLrBllz0zjxaH0aOe5oNm3KtEMyCntST-9",
+            .lazy = true,
+        },
+        .gobject = .{
+            // https://github.com/jcollie/ghostty-gobject based on zig_gobject
+            // Temporary until we generate them at build time automatically.
+            .url = "https://github.com/jcollie/ghostty-gobject/releases/download/0.15.1-2025-09-04-48-1/ghostty-gobject-0.15.1-2025-09-04-48-1.tar.zst",
+            .hash = "gobject-0.3.0-Skun7ET3nQAc0LzvO0NAvTiGGnmkF36cnmbeCAF6MB7Z",
+            .lazy = true,
+        },
+
+        // C libs
+        .cimgui = .{ .path = "./pkg/cimgui", .lazy = true },
+        .fontconfig = .{ .path = "./pkg/fontconfig", .lazy = true },
+        .freetype = .{ .path = "./pkg/freetype", .lazy = true },
+        .gtk4_layer_shell = .{ .path = "./pkg/gtk4-layer-shell", .lazy = true },
+        .harfbuzz = .{ .path = "./pkg/harfbuzz", .lazy = true },
+        .highway = .{ .path = "./pkg/highway", .lazy = true },
+        .libintl = .{ .path = "./pkg/libintl", .lazy = true },
+        .libpng = .{ .path = "./pkg/libpng", .lazy = true },
+        .macos = .{ .path = "./pkg/macos", .lazy = true },
+        .oniguruma = .{ .path = "./pkg/oniguruma", .lazy = true },
+        .opengl = .{ .path = "./pkg/opengl", .lazy = true },
+        .sentry = .{ .path = "./pkg/sentry", .lazy = true },
+        .simdutf = .{ .path = "./pkg/simdutf", .lazy = true },
+        .utfcpp = .{ .path = "./pkg/utfcpp", .lazy = true },
+        .wuffs = .{ .path = "./pkg/wuffs", .lazy = true },
+        .zlib = .{ .path = "./pkg/zlib", .lazy = true },
+
+        // Shader translation
+        .glslang = .{ .path = "./pkg/glslang", .lazy = true },
+        .spirv_cross = .{ .path = "./pkg/spirv-cross", .lazy = true },
+
+        // Wayland
+        .wayland = .{
+            .url = "https://deps.files.ghostty.org/wayland-9cb3d7aa9dc995ffafdbdef7ab86a949d0fb0e7d.tar.gz",
+            .hash = "N-V-__8AAKrHGAAs2shYq8UkE6bGcR1QJtLTyOE_lcosMn6t",
+            .lazy = true,
+        },
+        .wayland_protocols = .{
+            .url = "https://deps.files.ghostty.org/wayland-protocols-258d8f88f2c8c25a830c6316f87d23ce1a0f12d9.tar.gz",
+            .hash = "N-V-__8AAKw-DAAaV8bOAAGqA0-oD7o-HNIlPFYKRXSPT03S",
+            .lazy = true,
+        },
+        .plasma_wayland_protocols = .{
+            .url = "https://deps.files.ghostty.org/plasma_wayland_protocols-12207e0851c12acdeee0991e893e0132fc87bb763969a585dc16ecca33e88334c566.tar.gz",
+            .hash = "N-V-__8AAKYZBAB-CFHBKs3u4JkeiT4BMvyHu3Y5aaWF3Bbs",
+            .lazy = true,
+        },
+
+        // Fonts
+        .jetbrains_mono = .{
+            .url = "https://deps.files.ghostty.org/JetBrainsMono-2.304.tar.gz",
+            .hash = "N-V-__8AAIC5lwAVPJJzxnCAahSvZTIlG-HhtOvnM1uh-66x",
+        },
+        .nerd_fonts_symbols_only = .{
+            .url = "https://deps.files.ghostty.org/NerdFontsSymbolsOnly-3.4.0.tar.gz",
+            .hash = "N-V-__8AAMVLTABmYkLqhZPLXnMl-KyN38R8UVYqGrxqO26s",
+        },
+
+        // Other
+        .apple_sdk = .{ .path = "./pkg/apple-sdk" },
+        .iterm2_themes = .{
+            .url = "https://github.com/mbadolato/iTerm2-Color-Schemes/releases/download/release-20251002-142451-4a5043e/ghostty-themes.tgz",
+            .hash = "N-V-__8AALIsAwDyo88G5mGJGN2lSVmmFMx4YePfUvp_2o3Y",
+            .lazy = true,
+        },
+    },
+}
+
+===== ghostty/pkg/apple-sdk/build.zig.zon =====
+.{
+    .name = .apple_sdk,
+    .version = "0.1.0",
+    .dependencies = .{},
+    .fingerprint = 0xdde52860f7c464d2,
+    .paths = .{""},
+}
+
+===== ghostty/pkg/breakpad/build.zig.zon =====
+.{
+    .name = .breakpad,
+    .version = "0.1.0",
+    .fingerprint = 0xfe9f9e4c76d5f962,
+    .paths = .{""},
+    .dependencies = .{
+        .breakpad = .{
+            .url = "https://deps.files.ghostty.org/breakpad-b99f444ba5f6b98cac261cbb391d8766b34a5918.tar.gz",
+            .hash = "N-V-__8AALw2uwF_03u4JRkZwRLc3Y9hakkYV7NKRR9-RIZJ",
+            .lazy = true,
+        },
+
+        .apple_sdk = .{ .path = "../apple-sdk" },
+    },
+}
+
+===== ghostty/pkg/cimgui/build.zig.zon =====
+.{
+    .name = .cimgui,
+    .version = "1.90.6", // -docking branch
+    .fingerprint = 0x49726f5f8acbc90d,
+    .paths = .{""},
+    .dependencies = .{
+        // This should be kept in sync with the submodule in the cimgui source
+        // code in ./vendor/ to be safe that they're compatible.
+        .imgui = .{
+            // ocornut/imgui
+            .url = "https://deps.files.ghostty.org/imgui-1220bc6b9daceaf7c8c60f3c3998058045ba0c5c5f48ae255ff97776d9cd8bfc6402.tar.gz",
+            .hash = "N-V-__8AAH0GaQC8a52s6vfIxg88OZgFgEW6DFxfSK4lX_l3",
+        },
+
+        .apple_sdk = .{ .path = "../apple-sdk" },
+        .freetype = .{ .path = "../freetype" },
+    },
+}
+
+===== ghostty/pkg/fontconfig/build.zig.zon =====
+.{
+    .name = .fontconfig,
+    .version = "2.14.2",
+    .fingerprint = 0x4a79a5a40c6d6d8,
+    .paths = .{""},
+    .dependencies = .{
+        .fontconfig = .{
+            .url = "https://deps.files.ghostty.org/fontconfig-2.14.2.tar.gz",
+            .hash = "N-V-__8AAIrfdwARSa-zMmxWwFuwpXf1T3asIN7s5jqi9c1v",
+            .lazy = true,
+        },
+
+        .freetype = .{ .path = "../freetype", .lazy = true },
+        .libxml2 = .{ .path = "../libxml2", .lazy = true },
+    },
+}
+
+===== ghostty/pkg/freetype/build.zig.zon =====
+.{
+    .name = .freetype,
+    .version = "2.13.2",
+    .fingerprint = 0xac2059b6f7bbfe0a,
+    .paths = .{""},
+    .dependencies = .{
+        // freetype/freetype
+        .freetype = .{
+            .url = "https://deps.files.ghostty.org/freetype-1220b81f6ecfb3fd222f76cf9106fecfa6554ab07ec7fdc4124b9bb063ae2adf969d.tar.gz",
+            .hash = "N-V-__8AAKLKpwC4H27Ps_0iL3bPkQb-z6ZVSrB-x_3EEkub",
+            .lazy = true,
+        },
+
+        .apple_sdk = .{ .path = "../apple-sdk" },
+        .libpng = .{ .path = "../libpng" },
+        .zlib = .{ .path = "../zlib" },
+    },
+}
+
+===== ghostty/pkg/glslang/build.zig.zon =====
+.{
+    .name = .glslang,
+    .version = "14.2.0",
+    .fingerprint = 0x274a35558e2e504,
+    .paths = .{""},
+    .dependencies = .{
+        // KhronosGroup/glslang
+        .glslang = .{
+            .url = "https://deps.files.ghostty.org/glslang-12201278a1a05c0ce0b6eb6026c65cd3e9247aa041b1c260324bf29cee559dd23ba1.tar.gz",
+            .hash = "N-V-__8AABzkUgISeKGgXAzgtutgJsZc0-kkeqBBscJgMkvy",
+        },
+
+        .apple_sdk = .{ .path = "../apple-sdk" },
+    },
+}
+
+===== ghostty/pkg/gtk4-layer-shell/build.zig.zon =====
+.{
+    .name = .gtk4_layer_shell,
+    .version = "1.1.0",
+    .fingerprint = 0x4b96f9483c6feeb1,
+    .paths = .{""},
+    .dependencies = .{
+        .gtk4_layer_shell = .{
+            .url = "https://deps.files.ghostty.org/gtk4-layer-shell-1.1.0.tar.gz",
+            .hash = "N-V-__8AALiNBAA-_0gprYr92CjrMj1I5bqNu0TSJOnjFNSr",
+            .lazy = true,
+        },
+        .wayland_protocols = .{
+            .url = "https://deps.files.ghostty.org/wayland-protocols-258d8f88f2c8c25a830c6316f87d23ce1a0f12d9.tar.gz",
+            .hash = "N-V-__8AAKw-DAAaV8bOAAGqA0-oD7o-HNIlPFYKRXSPT03S",
+            .lazy = true,
+        },
+    },
+}
+
+===== ghostty/pkg/harfbuzz/build.zig.zon =====
+.{
+    .name = .harfbuzz,
+    .version = "11.0.0",
+    .fingerprint = 0xbd60917cd18865d8,
+    .paths = .{""},
+    .dependencies = .{
+        // harfbuzz/harfbuzz
+        .harfbuzz = .{
+            .url = "https://deps.files.ghostty.org/harfbuzz-11.0.0.tar.xz",
+            .hash = "N-V-__8AAG02ugUcWec-Ndp-i7JTsJ0dgF8nnJRUInkGLG7G",
+            .lazy = true,
+        },
+
+        .freetype = .{ .path = "../freetype" },
+        .macos = .{ .path = "../macos" },
+        .apple_sdk = .{ .path = "../apple-sdk" },
+    },
+}
+
+===== ghostty/pkg/highway/build.zig.zon =====
+.{
+    .name = .highway,
+    .version = "1.2.0",
+    .fingerprint = 0xdbcf1a7425023274,
+    .paths = .{""},
+    .dependencies = .{
+        // google/highway
+        .highway = .{
+            .url = "https://deps.files.ghostty.org/highway-66486a10623fa0d72fe91260f96c892e41aceb06.tar.gz",
+            .hash = "N-V-__8AAGmZhABbsPJLfbqrh6JTHsXhY6qCaLAQyx25e0XE",
+        },
+
+        .apple_sdk = .{ .path = "../apple-sdk" },
+    },
+}
+
+===== ghostty/pkg/libintl/build.zig.zon =====
+.{
+    .name = .libintl,
+    .version = "0.24.0",
+    .fingerprint = 0x16434c723ba7278a,
+    .paths = .{""},
+    .dependencies = .{
+        .gettext = .{
+            .url = "https://deps.files.ghostty.org/gettext-0.24.tar.gz",
+            .hash = "N-V-__8AADcZkgn4cMhTUpIz6mShCKyqqB-NBtf_S2bHaTC-",
+            .lazy = true,
+        },
+
+        .apple_sdk = .{ .path = "../apple-sdk" },
+    },
+}
+
+===== ghostty/pkg/libpng/build.zig.zon =====
+.{
+    .name = .libpng,
+    .version = "1.6.43",
+    .fingerprint = 0xb7a09eb437ca8a79,
+    .paths = .{""},
+    .dependencies = .{
+        // glennrp/libpng
+        .libpng = .{
+            .url = "https://deps.files.ghostty.org/libpng-1220aa013f0c83da3fb64ea6d327f9173fa008d10e28bc9349eac3463457723b1c66.tar.gz",
+            .hash = "N-V-__8AAJrvXQCqAT8Mg9o_tk6m0yf5Fz-gCNEOKLyTSerD",
+            .lazy = true,
+        },
+
+        .zlib = .{ .path = "../zlib", .lazy = true },
+        .apple_sdk = .{ .path = "../apple-sdk" },
+    },
+}
+
+===== ghostty/pkg/libxml2/build.zig.zon =====
+.{
+    .name = .libxml2,
+    .version = "2.11.5",
+    .fingerprint = 0xf268267b0b8b040d,
+    .paths = .{""},
+    .dependencies = .{
+        .libxml2 = .{
+            .url = "https://deps.files.ghostty.org/libxml2-2.11.5.tar.gz",
+            .hash = "N-V-__8AAG3RoQEyRC2Vw7Qoro5SYBf62IHn3HjqtNVY6aWK",
+        },
+    },
+}
+
+===== ghostty/pkg/macos/build.zig.zon =====
+.{
+    .name = .macos,
+    .version = "0.1.0",
+    .fingerprint = 0x45e2f6107d5b2b2c,
+    .paths = .{""},
+    .dependencies = .{
+        .apple_sdk = .{ .path = "../apple-sdk" },
+    },
+}
+
+===== ghostty/pkg/oniguruma/build.zig.zon =====
+.{
+    .name = .oniguruma,
+    .version = "6.9.9",
+    .fingerprint = 0xe3b537b18c5785a8,
+    .paths = .{""},
+    .dependencies = .{
+        // kkos/oniguruma
+        .oniguruma = .{
+            .url = "https://deps.files.ghostty.org/oniguruma-1220c15e72eadd0d9085a8af134904d9a0f5dfcbed5f606ad60edc60ebeccd9706bb.tar.gz",
+            .hash = "N-V-__8AAHjwMQDBXnLq3Q2QhaivE0kE2aD138vtX2Bq1g7c",
+            .lazy = true,
+        },
+
+        .apple_sdk = .{ .path = "../apple-sdk" },
+    },
+}
+
+===== ghostty/pkg/sentry/build.zig.zon =====
+.{
+    .name = .sentry,
+    .version = "0.7.8",
+    .fingerprint = 0xd177b4a12f6b3b79,
+    .paths = .{""},
+    .dependencies = .{
+        // getsentry/sentry-native
+        .sentry = .{
+            .url = "https://deps.files.ghostty.org/sentry-1220446be831adcca918167647c06c7b825849fa3fba5f22da394667974537a9c77e.tar.gz",
+            .hash = "N-V-__8AAPlZGwBEa-gxrcypGBZ2R8Bse4JYSfo_ul8i2jlG",
+            .lazy = true,
+        },
+
+        .apple_sdk = .{ .path = "../apple-sdk" },
+        .breakpad = .{ .path = "../breakpad", .lazy = true },
+    },
+}
+
+===== ghostty/pkg/simdutf/build.zig.zon =====
+.{
+    .name = .simdutf,
+    .version = "5.2.8",
+    .fingerprint = 0x7494ad640528a0d,
+    .paths = .{""},
+    .dependencies = .{
+        .apple_sdk = .{ .path = "../apple-sdk" },
+    },
+}
+
+===== ghostty/pkg/spirv-cross/build.zig.zon =====
+.{
+    .name = .spirv_cross,
+    .version = "13.1.1",
+    .fingerprint = 0x7ea1d8312b06cca,
+    .paths = .{""},
+    .dependencies = .{
+        // KhronosGroup/SPIRV-Cross
+        .spirv_cross = .{
+            .url = "https://deps.files.ghostty.org/spirv_cross-1220fb3b5586e8be67bc3feb34cbe749cf42a60d628d2953632c2f8141302748c8da.tar.gz",
+            .hash = "N-V-__8AANb6pwD7O1WG6L5nvD_rNMvnSc9Cpg1ijSlTYywv",
+        },
+
+        .apple_sdk = .{ .path = "../apple-sdk" },
+    },
+}
+
+===== ghostty/pkg/utf8proc/build.zig.zon =====
+.{
+    .name = "utf8proc",
+    .version = "2.8.0",
+    .paths = .{""},
+    .dependencies = .{
+        .utf8proc = .{
+            .url = "https://github.com/JuliaStrings/utf8proc/archive/refs/tags/v2.8.0.tar.gz",
+            .hash = "1220056ce228a8c58f1fa66ab778f5c8965e62f720c1d30603c7d534cb7d8a605ad7",
+        },
+    },
+}
+
+===== ghostty/pkg/utfcpp/build.zig.zon =====
+.{
+    .name = .utfcpp,
+    .version = "4.0.5",
+    .fingerprint = 0xcd99aeb2334ae11a,
+    .paths = .{""},
+    .dependencies = .{
+        // nemtrif/utfcpp
+        .utfcpp = .{
+            .url = "https://deps.files.ghostty.org/utfcpp-1220d4d18426ca72fc2b7e56ce47273149815501d0d2395c2a98c726b31ba931e641.tar.gz",
+            .hash = "N-V-__8AAHffAgDU0YQmynL8K35WzkcnMUmBVQHQ0jlcKpjH",
+            .lazy = true,
+        },
+
+        .apple_sdk = .{ .path = "../apple-sdk" },
+    },
+}
+
+===== ghostty/pkg/wuffs/build.zig.zon =====
+.{
+    .name = .wuffs,
+    .version = "0.0.0",
+    .fingerprint = 0x67c0c059de921c4f,
+    .dependencies = .{
+        // google/wuffs
+        .wuffs = .{
+            .url = "https://deps.files.ghostty.org/wuffs-122037b39d577ec2db3fd7b2130e7b69ef6cc1807d68607a7c232c958315d381b5cd.tar.gz",
+            .hash = "N-V-__8AAAzZywE3s51XfsLbP9eyEw57ae9swYB9aGB6fCMs",
+            .lazy = true,
+        },
+
+        // make-github-pseudonymous-again/pixels
+        .pixels = .{
+            .url = "https://deps.files.ghostty.org/pixels-12207ff340169c7d40c570b4b6a97db614fe47e0d83b5801a932dcd44917424c8806.tar.gz",
+            .hash = "N-V-__8AADYiAAB_80AWnH1AxXC0tql9thT-R-DYO1gBqTLc",
+            .lazy = true,
+        },
+
+        .apple_sdk = .{ .path = "../apple-sdk" },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}
+
+===== ghostty/pkg/zlib/build.zig.zon =====
+.{
+    .name = .zlib,
+    .version = "1.3.1",
+    .fingerprint = 0x73887d3aef823f9e,
+    .paths = .{""},
+    .dependencies = .{
+        // madler/zlib
+        .zlib = .{
+            .url = "https://deps.files.ghostty.org/zlib-1220fed0c74e1019b3ee29edae2051788b080cd96e90d56836eea857b0b966742efb.tar.gz",
+            .hash = "N-V-__8AAB0eQwD-0MdOEBmz7intriBReIsIDNlukNVoNu6o",
+            .lazy = true,
+        },
+
+        .apple_sdk = .{ .path = "../apple-sdk" },
+    },
+}

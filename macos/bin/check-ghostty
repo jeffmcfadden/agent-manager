@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+Dir.chdir(ENV.fetch('SRCROOT'))
+required = %w[vendor/libghostty/include/ghostty.h vendor/libghostty/lib/libghostty.a vendor/libghostty/resources/ghostty vendor/libghostty/without-libintl]
+unless required.all? { |path| File.exist?(path) }
+  warn 'error: libghostty is missing. In Terminal, run ZIG=/path/to/zig-0.14.1/zig bin/setup-ghostty from the project folder, then build again.'
+  exit 1
+end

@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+# Zig 0.14 discovers the SDK with an explicit --sdk macosx, ignoring SDKROOT.
+# Override only that SDK lookup during dependency setup; preserve other tools.
+arguments = ARGV.dup
+# Xcode's Metal shim can fail to discover an already mounted toolchain.
+# Allow an explicit installed toolchain without changing system configuration.
+if (toolchain = ENV['GHOSTTY_METAL_TOOLCHAIN'])
+  if (index = arguments.index { |argument| %w[metal metallib].include?(argument) })
+    tool = File.join(toolchain, 'usr/bin', arguments[index])
+    abort "Metal tool not found: #{tool}" unless File.executable?(tool)
+    tool_arguments = arguments[(index + 1)..-1]
+    if arguments[index] == 'metal' && (cache = ENV['CLANG_MODULE_CACHE_PATH'])
+      tool_arguments << "-fmodules-cache-path=#{cache}"
+    end
+    exec(tool, *tool_arguments)
+  end
+end
+if (index = arguments.index('--sdk')) && arguments[index + 1] == 'macosx'
+  arguments[index + 1] = ENV.fetch('GHOSTTY_MACOS_SDK')
+end
+exec('/usr/bin/xcrun', *arguments)

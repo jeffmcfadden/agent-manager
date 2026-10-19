@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+require 'json'
+require 'open3'
+
+# Run from an ordinary Terminal when the agent sandbox cannot access GitHub.
+class RepositoryPublisher
+  REMOTE = 'https://github.com/jeffmcfadden/agent-manager.git'.freeze
+
+  def publish
+    Dir.chdir(File.expand_path('..', __dir__)) do
+      run('gh', 'auth', 'status')
+      user = JSON.parse(capture('gh', 'api', 'user'))
+      abort 'Sign in as jeffmcfadden before publishing.' unless user.fetch('login') == 'jeffmcfadden'
+      run('git', 'init', '-b', 'main') unless File.exist?('.git')
+      remote, status = Open3.capture2('git', 'remote', 'get-url', 'origin', err: File::NULL)
+      if status.success?
+        abort "Unexpected origin: #{remote.strip}" unless [REMOTE, 'git@github.com:jeffmcfadden/agent-manager.git'].include?(remote.strip)
+      else
+        run('git', 'remote', 'add', 'origin', REMOTE)
+      end
+      run('git', 'add', '--all')
+      _, unchanged = Open3.capture2('git', 'diff', '--cached', '--quiet')
+      unless unchanged.success?
+        run('git', '-c', 'user.name=Jeff McFadden', '-c',
+            "user.email=#{user.fetch('id')}+jeffmcfadden@users.noreply.github.com",
+            'commit', '-m', 'Publish Agent Manager with WTFPL and third-party notices')
+      end
+      # A normal push rejects conflicting remote history; never force-push.
+      run('git', '-c', 'credential.helper=', '-c',
+          'credential.helper=!gh auth git-credential', 'push', '-u', REMOTE, 'main')
+      puts 'Published: https://github.com/jeffmcfadden/agent-manager'
+    end
+  end
+
+  private
+
+  def capture(*arguments)
+    output, status = Open3.capture2(*arguments)
+    abort "Command failed: #{arguments.join(' ')}" unless status.success?
+    output
+  end
+
+  def run(*arguments)
+    abort "Command failed: #{arguments.join(' ')}" unless system(*arguments)
+  end
+end
+
+RepositoryPublisher.new.publish

@@ -1,0 +1,9 @@
+Generated with the built-in image_gen tool.
+
+Use case: stylized-concept
+Asset type: full-resolution macOS application icon, square 2048x2048 master if supported, at least 1024x1024.
+Primary request: Little robots zooming around inside an old-school CRT monitor frame, for a personal agent-session manager Mac app.
+Subject and composition: One iconic chunky vintage desktop CRT monitor, nearly front-facing with a slight dimensional perspective, generously sized to fill the square canvas while leaving a clean safe margin. Thick rounded ivory/beige plastic bezel, convex dark glass screen, small power button and indicator, subtle short pedestal. Inside the screen, three small clearly recognizable friendly robots are energetically zipping in different directions, with curved luminous motion trails. Robots have simple expressive faces, antennae and compact rounded bodies, distinct readable silhouettes. Keep all robot action contained inside the CRT screen.
+Style: beautifully crafted premium Mac app icon, playful tactile 3D illustration with crisp shapes, charming retro-futurist character. The screen has luminous phosphor green robot highlights, subtle scanlines and glass reflections; vintage warm plastic frame. Strong silhouette and contrast, polished soft lighting, limited coherent colors, readable at small Dock sizes. Make the robots and movement the focal point; no excessive microscopic detail.
+Background: genuine transparent alpha outside the monitor silhouette, including its small soft contact shadow. No surrounding room or desktop, no enclosing square background, no extra icon border.
+Constraints: single finished icon only, no presentation mockup, no lettering, no logos, no watermark. Full monitor visible, not cropped.

@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+Dir.chdir(File.expand_path('..', __dir__))
+abort 'Build failed' unless system('bin/build')
+exec('open', 'build/Build/Products/Debug/AgentManager.app')

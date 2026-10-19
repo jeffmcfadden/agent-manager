@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+Dir.chdir(File.expand_path('..', __dir__))
+exec('xcodebuild', '-project', 'AgentManager.xcodeproj', '-scheme', 'AgentManager',
+     '-configuration', 'Debug', '-derivedDataPath', 'build', 'build', *ARGV)

@@ -1,0 +1,67 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+require_relative 'ghostty_archive'
+require_relative 'ghostty_build_patch'
+ROOT = File.expand_path('..', __dir__)
+Dir.chdir(ROOT)
+def run(*args)
+  abort "Command failed: #{args.join(' ')}" unless system(*args)
+end
+
+# Old Zig's Mach-O linker cannot read the newest macOS SDK correctly.
+# Keep this workaround local to dependency setup, without changing xcode-select.
+class GhosttySDK
+  def configure
+    sdk = ENV['GHOSTTY_MACOS_SDK']
+    version = IO.popen(['/usr/bin/xcrun', '--sdk', 'macosx', '--show-sdk-version'], &:read).strip
+    if !sdk && version.split('.').first.to_i >= 26
+      sdk = Dir['/Library/Developer/CommandLineTools/SDKs/MacOSX*.sdk'].select do |path|
+        File.basename(path).match?(/\AMacOSX(14|15)\.\d+\.sdk\z/)
+      end.max_by { |path| File.basename(path).scan(/\d+/).map(&:to_i) }
+      abort 'Zig 0.14.1 needs an older SDK here. Set GHOSTTY_MACOS_SDK to an installed macOS 14 or 15 SDK.' unless sdk
+    end
+    return unless sdk
+    sdk = File.expand_path(sdk)
+    abort "SDK not found: #{sdk}" unless File.directory?(sdk)
+    ENV['GHOSTTY_MACOS_SDK'] = sdk
+    ENV['SDKROOT'] = sdk
+    ENV['PATH'] = "#{ROOT}/bin/ghostty-toolchain:#{ENV.fetch('PATH')}"
+    puts "Building Ghostty with SDK: #{sdk}"
+    $stdout.flush
+  end
+end
+FileUtils.mkdir_p(['.cache', 'vendor', 'build'])
+ENV['CLANG_MODULE_CACHE_PATH'] ||= File.join(ROOT, '.cache/clang')
+zig = ENV.fetch('ZIG', 'zig')
+abort 'Zig not found. Install Zig 0.14.1 and set ZIG=/path/to/zig.' unless system('which', zig, out: File::NULL)
+unless IO.popen([zig, 'version'], &:read).strip == '0.14.1'
+  abort 'Ghostty 1.2.3 requires Zig 0.14.1. Install it and set ZIG=/path/to/zig.'
+end
+unless File.exist?('vendor/ghostty/build.zig')
+  run('curl', '-fL', 'https://release.files.ghostty.org/1.2.3/ghostty-1.2.3.tar.gz', '-o', '.cache/ghostty.tar.gz')
+  run('tar', '-xzf', '.cache/ghostty.tar.gz', '-C', 'vendor')
+  FileUtils.mv('vendor/ghostty-1.2.3', 'vendor/ghostty')
+end
+ENV['ZIG_GLOBAL_CACHE_DIR'] = File.join(ROOT, '.cache/zig')
+GhosttyBuildPatch.new('vendor/ghostty').apply
+GhosttySDK.new.configure
+Dir.chdir('vendor/ghostty') do
+  run(zig, 'build', '-Doptimize=ReleaseFast', '-Demit-macos-app=false',
+      '-Demit-xcframework=true', '-Dxcframework-target=native', '-Dsentry=false',
+      '-Di18n=false', '-Demit-docs=false', '-Demit-themes=false', '-Dversion-string=1.2.3')
+end
+library = Dir['vendor/ghostty/macos/GhosttyKit.xcframework/**/libghostty-fat.a'].first ||
+          Dir['vendor/ghostty/macos/GhosttyKit.xcframework/**/libghostty.a'].first ||
+          Dir['vendor/ghostty/macos/GhosttyKit.xcframework/**/GhosttyKit.framework/GhosttyKit'].first ||
+          Dir['vendor/ghostty/zig-out/**/*.a'].find { |p| File.basename(p) == 'libghostty.a' }
+abort 'Could not find built libghostty.a' unless library
+destination = 'vendor/libghostty'
+FileUtils.mkdir_p(["#{destination}/lib", "#{destination}/include", "#{destination}/resources"])
+GhosttyArchive.new('vendor/ghostty').stage("#{destination}/lib/libghostty.a")
+File.write("#{destination}/without-libintl", "Ghostty 1.2.3; i18n disabled; libintl excluded\n")
+FileUtils.cp('vendor/ghostty/include/ghostty.h', "#{destination}/include/ghostty.h")
+FileUtils.cp_r('vendor/ghostty/zig-out/share/ghostty', "#{destination}/resources")
+if Dir.exist?('vendor/ghostty/zig-out/share/terminfo')
+  FileUtils.cp_r('vendor/ghostty/zig-out/share/terminfo', "#{destination}/resources")
+end
+puts 'Ghostty is ready. Open AgentManager.xcodeproj and press Command-R.'

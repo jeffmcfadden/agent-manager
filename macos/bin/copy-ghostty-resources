@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+source = File.join(ENV.fetch('SRCROOT'), 'vendor/libghostty/resources')
+destination = File.join(ENV.fetch('TARGET_BUILD_DIR'), ENV.fetch('UNLOCALIZED_RESOURCES_FOLDER_PATH'))
+FileUtils.mkdir_p(destination)
+FileUtils.cp(File.join(ENV.fetch('SRCROOT'), 'Resources/tmux.conf'), destination)
+repository = File.expand_path('..', ENV.fetch('SRCROOT'))
+licenses = File.join(destination, 'Licenses')
+FileUtils.mkdir_p(licenses)
+FileUtils.cp(File.join(repository, 'LICENSE'), licenses)
+FileUtils.cp(File.join(repository, 'THIRD_PARTY_NOTICES.md'), licenses)
+FileUtils.rm_rf(File.join(licenses, 'ThirdParty'))
+FileUtils.cp_r(File.join(repository, 'ThirdParty'), licenses)
+Dir.children(source).each do |name|
+  FileUtils.rm_rf(File.join(destination, name))
+  FileUtils.cp_r(File.join(source, name), destination)
+end
