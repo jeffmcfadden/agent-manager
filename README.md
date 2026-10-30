@@ -52,7 +52,7 @@ are included in the app under **Agent Manager → Licenses…**.
 Run `ruby bin/release` on Apple Silicon to create the optimized Release app,
 ZIP, checksums, and release notes under `macos/build/release`. Commit the
 release source changes, then run `ruby bin/release --upload-only` to push the
-commit and publish version 1.0.0 as tag `v1.0.0`. This requires an authenticated
+commit and publish version 1.0.1 as tag `v1.0.1`. This requires an authenticated
 GitHub CLI. `ruby bin/release --publish` builds and publishes in one invocation
 when the working tree is already clean. The script never force-pushes or
 overwrites an existing release.

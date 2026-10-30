@@ -90,8 +90,10 @@ a row puts keyboard focus in the terminal.
 - **⌘1 / Show Sessions** reveals the sidebar and focuses its search field.
 - **⌘⇧R / Rename Session…** changes the current session's persistent tmux name.
 - **⌘⇧D / Detach Session** disconnects the terminal and leaves the window open.
-- **⌘W** closes a window, disconnecting its local client without ending the shell.
-- **End Session…** explicitly terminates the tmux session after confirmation.
+- **⌘W / End Session…** ends the visible tmux session after confirmation, keeping
+  the window open. It is disabled when no session is visible.
+- **Close Window** closes a window, disconnecting its local client without ending
+  the shell.
 - **⌘Q** disconnects local clients and quits; tmux keeps the shells alive.
 
 Right-click a sidebar row to rename, detach, end, or open it in another window.

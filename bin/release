@@ -4,7 +4,7 @@ require 'fileutils'
 require 'open3'
 
 class ReleaseBuilder
-  VERSION = '1.0.0'.freeze
+  VERSION = '1.0.1'.freeze
   TAG = "v#{VERSION}".freeze
   ROOT = File.expand_path('..', __dir__).freeze
   OUTPUT = File.join(ROOT, 'macos/build/release').freeze
@@ -42,9 +42,10 @@ class ReleaseBuilder
     run('ditto', '-c', '-k', '--sequesterRsrc', stage, archive)
     File.write(File.join(OUTPUT, 'SHA256SUMS'), "#{Digest::SHA256.file(archive).hexdigest}  #{ASSET}\n")
     File.write(File.join(OUTPUT, 'release-notes.md'), <<~TEXT)
-      Agent Manager 1.0.0: native AppKit terminal session management, powered by
+      Agent Manager 1.0.1: native AppKit terminal session management, powered by
       libghostty and persistent tmux sessions.
 
+      - Command-W now ends the visible session after confirmation and keeps the window open.
       - **Apple Silicon only; macOS 13 or newer.**
       - Download `#{ASSET}`, unzip, and move `AgentManager.app` to Applications.
       - **Requires tmux:** install it with `brew install tmux` before launching.
